@@ -2,7 +2,7 @@ import socket
 import os
 from typing import Union
 from pathlib import Path
-from TFTP_protocol import *
+from udp.TFTP_protocol import *
 
 
 # noinspection PyPep8Naming
@@ -43,7 +43,7 @@ class TFTP_Client:
                 return
 
         # RRQ to server
-        current_packet = build_rrq_packet(server_filename, self.mode)  # TODO -- filename or file_path
+        current_packet = build_rrq_packet(server_filename, self.mode)
         self.client_sock.sendto(current_packet, self.addr)
 
         try:

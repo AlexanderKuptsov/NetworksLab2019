@@ -4,8 +4,7 @@ import time
 from _thread import *
 from typing import Union
 from pathlib import Path
-
-from TFTP_protocol import *
+from udp.TFTP_protocol import *
 
 
 class ClientHandler:
@@ -60,9 +59,7 @@ class ClientHandler:
         print(f'[{self.client_info}] -- WRQ: file({filename_part}) mode({mode_part})')
         # ---------------------------------------
 
-        # TODO -- check
-        paths_data = filename_part.split(' ')
-        file_path = filename_part.split(' ')[1] if len(paths_data) > 1 else filename_part
+        file_path = os.path.join(self.server_dir, filename_part)
         if not os.path.isfile(file_path):
             try:
                 self.file_get = open(file_path, 'wb')  # TODO -- mode
@@ -223,7 +220,7 @@ class TFTP_Server:
                  port: int = DEFAULT_PORT,
                  root_dir: Union[str, Path] = DEFAULT_ROOT_DIR,
                  mode: str = DEFAULT_MODE):  # TODO
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # TODO -- IPPROTO_UDP?
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.host = host
         self.addr = (host, port)
         self.root_dir = Path(root_dir)

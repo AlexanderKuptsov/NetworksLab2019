@@ -1,9 +1,9 @@
 import os
-from TFTP_client import TFTP_Client
+from udp.client.TFTP_client import TFTP_Client
 
 SERVER_IP = '127.0.0.1'
 SERVER_PORT = 5001
-ROOT_DIR = 'Z:\\'
+ROOT_DIR = 'C:\Projects\\'
 MODE = 'octet'
 
 
@@ -39,5 +39,6 @@ if __name__ == '__main__':
         args = get_cmd()
         tftp_client.run_command(*args)
 
-# GET Z:\\Projects\\_Amazing\\TFTP_Client\\img.jpg Z:\\img.jpg
-# PUT Z:\\img2.jpg Z:\\Projects\\_Amazing\\TFTP_Client\\img2.jpg
+# Example commands
+# PUT C:\Projects\test.csv put.csv
+# GET test2.csv C:\Projects\get.csv

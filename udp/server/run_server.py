@@ -1,8 +1,8 @@
 import os
-from TFTP_server import TFTP_Server
+from udp.server.TFTP_server import TFTP_Server
 
-SERVER_PORT = 5001
-ROOT_DIR = 'Z:\\Projects\\_Amazing\\TFTP_Client\\'
+SERVER_PORT = 5002
+ROOT_DIR = 'C:\\Projects\\tftp\\'
 MODE = 'octet'
 
 if __name__ == '__main__':
